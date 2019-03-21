@@ -26,7 +26,7 @@ Then, Running aws cloudformation with below yaml files to deploy docker image on
    
   $aws cloudformation create-stack --stack-name iam --template-body file://$PWD/iam.yml --capabilities  CAPABILITY_IAM
   
-* Create app-clude yaml file then run
+* Create app-cluster yaml file then run
 
   $aws cloudformation create-stack --stack-name  app-cluster  file://$PWD/app-cluster.yml
 
