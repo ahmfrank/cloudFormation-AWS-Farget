@@ -15,6 +15,7 @@ Resources:
       ExecutionRoleArn: !ImportValue ECSTaskExecutionRole
       ContainerDefinitions:
         - Name: ahm_demo
+          # Your Java war filr build in Tomcat container and push to ECR repository as below url
           Image: 852841908877.dkr.ecr.us-east-2.amazonaws.com/docker-images:latest 
           PortMappings:
             - ContainerPort: 8080
