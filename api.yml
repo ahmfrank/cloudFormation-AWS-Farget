@@ -15,16 +15,16 @@ Resources:
       ExecutionRoleArn: !ImportValue ECSTaskExecutionRole
       ContainerDefinitions:
         - Name: ahm_demo
-          Image: 852841908877.dkr.ecr.us-east-2.amazonaws.com/docker-images:latest
+          Image: 852841908877.dkr.ecr.us-east-2.amazonaws.com/docker-images:latest 
           PortMappings:
             - ContainerPort: 8080
               Protocol: tcp
           LogConfiguration:
             LogDriver: awslogs
             Options:
-              awslogs-group: 'apis'
-              awslogs-region: !Ref AWS::Region
-              awslogs-stream-prefix: 'docker-images'
+              awslogs-group: 'apis' 
+              awslogs-region: !Ref AWS::Region  
+              awslogs-stream-prefix: 'demo-api'
 
   Service:
     Type: AWS::ECS::Service
@@ -52,15 +52,15 @@ Resources:
 
   TargetGroup:
     Type: AWS::ElasticLoadBalancingV2::TargetGroup
-    Properties:
+    Properties: 
       Name: Container-TargetGroup
       VpcId: !ImportValue VPC
-      Port: 80
+      Port: 80 
       Protocol: HTTP
       Matcher:
         HttpCode: 200-299
       HealthCheckIntervalSeconds: 10
-      HealthCheckPath: /webapp
+      HealthCheckPath: /JenkinsWar
       HealthCheckProtocol: HTTP
       HealthCheckTimeoutSeconds: 5
       HealthyThresholdCount: 10
@@ -74,7 +74,7 @@ Resources:
       Conditions:
         - Field: path-pattern
           Values:
-            - /webapp
+            - /JenkinsWar
       Actions:
         - TargetGroupArn: !Ref TargetGroup
           Type: forward
@@ -83,7 +83,7 @@ Resources:
 Outputs:
 
   ApiEndpoint:
-    Description: AHM ApiEndpoint
-    Value: !Join ['',['http://', !ImportValue DomainName, '/webapp']]
+    Description: Frank ApiEndpoint
+    Value: !Join ['',['http://', !ImportValue DomainName, '/JenkinsWar']]
     Export:
-      Name: 'AHM-Api-Endpoint'
+      Name: 'Frank-Api-Endpoint'
