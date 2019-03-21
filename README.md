@@ -5,7 +5,7 @@ Push docker image to AWS ECR repository.
 Then, Running aws cloudformation with below yaml files to deploy docker image on AWS Fargate ECS 
 
 * Create AWS ECR repository command . 
-  $aws  ecr create-repository  --repository-name  <<he name of repository>>
+  $aws  ecr create-repository  --repository-name  << the name of repository >>
 * to loggin to AWS 
   $aws  ecr  get-login  --no-include-email  |  sh 
 * create AWS VPC network Run cloudfomation command     
